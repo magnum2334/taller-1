@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Miles to Kilometers Converter</title>
+
+	<!--/ /-------- Normalize CSS --------/ /-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+	<!--/ /-------- Google Fonts --------/ /-->
+	<link href="https://fonts.googleapis.com/css?family=Oswald|PT+Sans&display=swap" rel="stylesheet">
+
+	<!--/ /-------- My Styles --------/ /-->
+	<link href="styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<h1>Miles to Kilometers Converter</h1>
+
+	<div class="container top">
+		<p>Type in a number of miles and click the button to convert the distance to kilometers.</p>
+
+		<form method="post" onsubmit=" validateForm()" action="somephpfile.php" id="convert">
+
+			<input type="text" name="distance" id="distance" placeholder="distance">
+			<input type="submit" name="convertdist" value="Convert Distance">
+
+		</form>
+	</div>
+	<div class="container bottom" id="answer">
+		<h2 class="invisible">Answer goes here</h2>
+	</div>
+	<script>
+		let result = document.getElementById("answer")
+		const footer = document.getElementsByClassName("invisible");
+		footer[0].removeAttribute("class");
+		const form = document.getElementsByTagName("form")
+		form[0].removeAttribute("method");
+		form[0].removeAttribute("action");
+
+
+		validateForm = () => {
+			event.preventDefault()
+			let distance = document.getElementById("distance").value
+			let distanceFloat = parseFloat(distance);
+			const factorConver =  1.609344
+			let milles = distance * factorConver
+			result.innerHTML =` result milles  =  ${ milles } `
+		}
+	</script>
+</body>
+
+</html>
